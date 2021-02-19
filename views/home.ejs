@@ -1,0 +1,59 @@
+<%- include('header') %>
+   <!-- Page Header -->
+  <header class="masthead" style="
+    background-image: url('https://images.unsplash.com/photo-1568833450751-fba3c6b2d129?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+  ">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Clean Blog</h1>
+            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <% data.forEach( (d)=>{%>
+       
+    <div class="row">
+      <div class="col-lg-3 col-md-4 mx-auto" >
+       <img class="img-thumbnail" src="<%=d.image%>" alt=""> 
+      </div>
+      <div class="col-lg-9s col-md-8 mx-auto">
+       
+        <div class="post-preview">
+          <a href="post.html">
+            <h2 class="post-title">
+              <%= d.postTitle%> 
+            </h2>
+            <h3 class="post-subtitle">
+              some problem erol cloud
+            </h3>
+          </a>
+          <p class="post-meta">
+            Posted by
+            <a href="#">Start Bootstrap</a>
+            on September 24, 2019
+          </p>
+        </div>
+        <hr />
+        
+
+        <!-- Pager -->
+        
+      </div>
+    </div>
+    <% }); %> 
+    <div class="clearfix">
+      <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+    </div> 
+  </div>
+
+  <hr />
+
+  <%- include('footer') %>

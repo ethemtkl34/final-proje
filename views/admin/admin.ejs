@@ -1,0 +1,48 @@
+<%- include('../header') %>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('https://images4.alphacoders.com/886/886518.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="page-heading">
+                        <h1>Admin Dashboard</h1>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- Main Content -->
+    <div class="container">
+        <% adminActions.forEach( (action)=>{%>
+            <div class="row">
+                <div class="col-lg-4 mx-auto">
+                    <button id="<%=action.actionId%>" onclick="cacthID(this.id)" type="button" class="btn btn-outline-primary btn-block float-left"><%=action.displayName%> </button>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+
+    <hr />
+    <script>
+        function cacthID(clicked_id) {
+            alert(clicked_id + " numaralı butona tıklandı")
+            if (clicked_id == 1) {
+                window.location.href = "chanheHomeImage";
+                return false;
+            }
+            if (clicked_id == 4) {
+                window.location.href = "addNewBlog";
+                return false;
+            }
+
+        }
+    </script>
+
+
+    <%- include('../footer') %>
