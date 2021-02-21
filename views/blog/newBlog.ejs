@@ -19,28 +19,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" 
-    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" 
-    crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template -->
     <link href="css/main.css" rel="stylesheet">
 
-<script>
+    <script>
+        $(document).ready(function() {
 
-$(document).ready(function(){
+            $("#myButton").click(function() {
+                var blogTitle = $("#blogTitle").val();
+                var comSentence = $("#comSentence").val();
+                var comImage = $("#comImage").val();
+                var blog = CKEDITOR.instances.myTextArea.getData();
 
-    $("#myButton").click(function(){
-        var blogTitle = $("#blogTitle").val();
-        var comSentence = $("comSentence").val();
-        var comImage = $("#comImage").val();
-        var blog = CKEDITOR.instances.myTextArea.getData();
+                var data = {
+                    blogTitle: blogTitle,
+                    comSentence: comSentence,
+                    comImage: comImage,
+                    blog: blog
+                };
 
-        console.log(blogTitle+"*******"+comSentence+"*******"+comImage+"*******"+blog+"*******");
-    });
-});
+                $.post("addNewBlog", {
+                        data: data
+                    })
+                    .then(function(addNewBlog) {
+                        console.log(addedBlog);
+                    });
 
-</script>
+            });
+        });
+    </script>
 
     <style>
         #mainNav .navbar-brand {
@@ -98,7 +107,7 @@ $(document).ready(function(){
 <br><br><br>
 
 <div class="container">
-    <h2 style="text-align: center; margin-bottom: 40px; " >Add a New Blog</h2>
+    <h2 style="text-align: center; margin-bottom: 40px; ">Add a New Blog</h2>
     <form>
         <div class="form-group">
             <label for="blogTitle">Blog Title</label>
@@ -106,17 +115,17 @@ $(document).ready(function(){
         </div>
         <div class="form-group">
             <label for="comSentence">Blog Commercial Sentence</label>
-            <input type="text" class="form-control" id="blogTitle" placeholder="Blog Title">
+            <input type="text" class="form-control" id="comSentence" placeholder="Blog Commercial Sentencee">
         </div>
         <div class="form-group">
-            <label for="blogTitle">Blog Title</label>
-            <input type="text" class="form-control" id="blogTitle" placeholder="Blog Title">
+            <label for="comImage">Blog Commercial Image URL</label>
+            <input type="text" class="form-control" id="comImage" placeholder="Blog Commercial Image URL">
         </div>
         <textarea name="editör" id="myTextArea" cols="30" rows="10"></textarea>
-        
+        <button id="myButton" class="btn btn-primary">Submit</button>
     </form>
-    <button id="myButton" class="btn btn-primary">Submit</button>
 </div>
+
 
 
 

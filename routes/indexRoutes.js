@@ -1,8 +1,10 @@
 const express = require("express"),
-  router = express.Router(),
+      Blog      = require("../models/blogModel"),
+      router = express.Router(),
   app = express.Router();
+  
 
-  let data=[
+ /* let data=[
 
     {
       postTitle: "ironman1",
@@ -20,10 +22,19 @@ const express = require("express"),
       image:"https://wallpapercave.com/wp/wp3703397.jpg"
     }
 
-  ]; 
+  ]; */
 
 router.get("/", (req, res) => {
-  res.render("home",{data : data});
+  Blog.find({},(err, foundBlogs)=>{
+    if (err) {
+      console.log("------ERÖRR------");
+        console.log(err);
+      } else {
+        console.log("ÇALİŞÜÜÜÜR AMAKOYM");
+        console.log(foundBlogs);
+  res.render("home",{foundBlogs:foundBlogs});
+      }
+  });
 });
 
 router.get("/about", (req, res) => {

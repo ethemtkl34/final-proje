@@ -36,7 +36,7 @@ let adminActions =[
 ];
 
 
-router.get('/admin', (req, res) => {
+router.get('/admin', isLoggedIn,(req, res) => {
   res.render("admin/admin", {adminActions:adminActions});
 })
 
@@ -51,11 +51,11 @@ router.post("/signin", passport.authenticate("local",
     
   }),(req, res)=>{});
 
-router.get("/signup", (req, res) => {
+router.get("/signup", isLoggedIn,(req, res) => {
     res.render("admin/signup");
   });
 
-router.post("/signup", (req, res) => {
+router.post("/signup", isLoggedIn,(req, res) => {
         
   let newUser = new User({username:req.body.username});
     User.register(newUser, req.body.password, (err, user)=>{
@@ -75,5 +75,12 @@ router.post("/signup", (req, res) => {
     res.redirect("/");
 
   });
+
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect("/signin");
+  }
 
 module.exports = router;

@@ -18,27 +18,29 @@
 
   <!-- Main Content -->
   <div class="container">
-    <% data.forEach( (d)=>{%>
+    <% foundBlogs.forEach( (blog)=>{%>
        
     <div class="row">
       <div class="col-lg-3 col-md-4 mx-auto" >
-       <img class="img-thumbnail" src="<%=d.image%>" alt=""> 
+       <img class="img-thumbnail" src="<%=blog.comImage%>" alt=""> 
       </div>
       <div class="col-lg-9s col-md-8 mx-auto">
        
         <div class="post-preview">
-          <a href="post.html">
+          <a href="/blog/<%= blog._id%>">
             <h2 class="post-title">
-              <%= d.postTitle%> 
+              <%= blog.title%> 
             </h2>
             <h3 class="post-subtitle">
-              some problem erol cloud
+              <%= blog.comSentence%> 
+              
             </h3>
           </a>
           <p class="post-meta">
             Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019
+            <a href="#">ethem tekeli</a>
+            <%= blog.date%> 
+            
           </p>
         </div>
         <hr />
