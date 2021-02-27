@@ -1,17 +1,18 @@
-const MongoClient = require("mongodb");
-const mongoose = require("mongoose"),
-    express = require("express"),
-    passport = require("passport"),
-    LocalStrategy = require("passport-local");
-bodyParser = require("body-parser"),
-    expressSession = require("express-session"),
-    User = require("./models/userModel"),
-    app = express();
-path = require("path");
+    const MongoClient   = require("mongodb");
+    const mongoose      = require("mongoose"),
+    express             = require("express"),
+    passport            = require("passport"),
+    LocalStrategy       = require("passport-local");
+    bodyParser          = require("body-parser"),
+    expressSession      = require("express-session"),
+    User                = require("./models/userModel"),
+    app                 = express();
+    path                = require("path");
+    const {OAuth2Client} = require('google-auth-library');
 //routers burda tanımla app use da kullan
-const indexRoutes = require("./routes/indexRoutes"),
-    adminRoutes = require("./routes/adminRoutes"),
-    blogRoutes = require("./routes/blogRoutes");
+    const   indexRoutes = require("./routes/indexRoutes"),
+            adminRoutes = require("./routes/adminRoutes"),
+            blogRoutes  = require("./routes/blogRoutes");
 // bunlar ne
 
 
